@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ContactWebApp_CRUD_.Models.Person>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h4>All Your Contacts</h4>
+            </div>
+            <div class="panel-body">
+                @Html.ActionLink("Create New", "Create", new { area = ""}, new { @class="btn btn-success"})
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.FirstName)</th>
+                                <th>@Html.DisplayNameFor(model => model.LastName)</th>
+                                <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                <th style="width:150px"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.FirstName</td>
+                                    <td>@item.LastName</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td>@item.Email</td>
+                                    <td>@Html.ActionLink("Edit", "Edit", new { id = item.PersonId }, new { @class = "btn btn-warning btn-sm" }) | @Html.ActionLink("Delete", "Delete", new { id = item.PersonId }, new { @class = "btn btn-danger btn-sm" })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
